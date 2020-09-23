@@ -1,11 +1,5 @@
-// load aws service
-
 const config = require('./config.json')
-var AWS = require('aws-sdk');
 const colors = require('./colors')
-
-AWS.config.loadFromPath('./config.json');
-
 const nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({

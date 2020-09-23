@@ -1,13 +1,9 @@
 {
-    "accessKeyId": "aws access key id" ,
-    "secretAccessKey": "aws secret access key" ,
-    "region": "us-west-2",
-    "synergy-id": "studentid",
-    "synergy-password": "password",
-    "verified-aws-email": "optional@notrequired.com",
-    "gmail-user": "gmail@gmail.com",
-    "gmail-app-password": "password",
-    "destination-emails": ["desination@test.com"],
+    "synergy-id": "STUDENTID",
+    "synergy-password": "PASSWORD",
+    "gmail-user": "SERVICE EMAIL",
+    "gmail-app-password": "SERVICE PASSWORD",
+    "destination-emails": ["DESTINATION EMAIL"],
     "update-interval": 1800000,
     "start-on-interval": false
 }
