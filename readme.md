@@ -1,6 +1,6 @@
 # StudentVue Mailer
 
- Powered by Nodemailer and Puppeteer, StudentVue Mailer will forward all of your StudentVue mail to your preferred personal
+ Powered by Nodemailer and Puppeteer, StudentVue Mailer is an automation program that will forward all of your StudentVue mail to your preferred personal
  inbox.
 
 ## Requirements
