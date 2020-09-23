@@ -22,12 +22,11 @@ The forwarded email will include extra information about the email including the
 
 1. Run `npm install`
 2. Add credentials to the `config.template.json`, then rename it to `config.json`
-3. Run `node install` in the root directory
+3. If on Windows, Run `node install` in the root directory
+3. If not, run `node index`
 4. Send a StudentVue mail to yourself to see if it's working! (It may take a while, depending on your update interval)
 
 ## `config.json`
-
-Here's all that you need to know about the `config.json` file!
 
 ```json
 {
