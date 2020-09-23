@@ -1,6 +1,7 @@
 # StudentVue Mailer
 
-Checking multiple inboxes can be a tiresome process, but StudentVue Mailer aims to be a solution to this problem. Powered by Nodemailer and Puppeteer, StudentVue Mailer will forward all of your StudentVue mail to your preferred personal inbox.
+ Powered by Nodemailer and Puppeteer, StudentVue Mailer will forward all of your StudentVue mail to your preferred personal
+ inbox.
 
 ## Requirements
 
@@ -11,9 +12,7 @@ Checking multiple inboxes can be a tiresome process, but StudentVue Mailer aims 
 
 ## Here's How It Works
 
-Nodemailer is a module for Node.js applications to easily send emails. StudentVue mailer relies on the Gmail transport service to send out emails.
-
-After logging into your StudentVue account, the mailer will make fetch requests to the StudentVue mail service.
+First, StudentVue Mailer will log into your account and temporarily save your session cookies. The mailer will then use these credentials to make fetch requests to the StudentVue mail service.
 
 By referencing the date in bucket.json, StudentVue Mailer will determine if there is any new mail. If new mail is found, StudentVue Mailer will fetch the content for each one and forward them to the destination emails specified in the `config.json` file.
 
