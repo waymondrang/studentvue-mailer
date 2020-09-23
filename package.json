@@ -1,0 +1,26 @@
+{
+  "name": "studentvue-mailer",
+  "version": "1.0.0",
+  "description": "Checking StudentVue Mail is a tiresome process. Receiving StudentVue Mail is also not always clear, either. The mobile app doesn't always send notifications when there is new mail. So, with these inconviences, I created the StudentVue Mailer, a tool powered by Puppeteer and AWS SES to foward Synergy mail to your personal inbox.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "raymond wang",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.725.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "form-data": "^3.0.0",
+    "node-fetch": "^2.6.1",
+    "node-windows": "^1.0.0-beta.5",
+    "nodemailer": "^6.4.11",
+    "puppeteer": "^5.2.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "studentvue",
+    "mailer"
+  ]
+}

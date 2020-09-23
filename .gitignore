@@ -1,0 +1,7 @@
+/node_modules
+/daemon
+email-prototype.html
+interceptor.js
+last-updated.js
+config.json
+send-message.js
