@@ -41,9 +41,17 @@ const connectivity = require('./check-connectivity');
 
             try {
                 var rawdata = fs.readFileSync('./bucket.json');
-                var bucket = JSON.parse(rawdata);
+                if (Buffer.from(rawdata).toString() === "") {
+                    console.log(`[${new Date().toLocaleString()}] ${colors.yellow}bucket.json is missing the last-updated field! Setting it to current date${colors.r}`);
+                    var bucket = {};
+                    bucket["last-updated"] = new Date();
+                } else {
+                    var bucket = JSON.parse(rawdata);
+                }
             } catch {
-                throw `${colors.red}Failed to read ${colors.yellow}bucket.json${colors.red}, aborting process${colors.r}`
+                console.log(`[${new Date().toLocaleString()}] ${colors.red}Failed to read ${colors.yellow}bucket.json${colors.red}, attempting fix${colors.r}`);
+                var bucket = {};
+                bucket["last-updated"] = new Date();
             }
 
             if (!bucket["last-updated"]) {

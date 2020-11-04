@@ -5,3 +5,4 @@ interceptor.js
 last-updated.js
 config.json
 send-message.js
+login.js

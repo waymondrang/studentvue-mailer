@@ -20,7 +20,7 @@ The forwarded email will include extra information about the email including the
 
 ## How To Install/Run 
 
-\*This service be *installed* on only Windows. However it can still be used just like any other Node application. 
+\*This service can only be *installed* on Windows. However it can still be used just like any other Node application. 
 
 1. Run `npm install`
 2. Add credentials to the `config.template.json`, then rename it to `config.json`
