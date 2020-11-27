@@ -7,6 +7,29 @@ const config = require('./config.json');
 const colors = require('./colors');
 const connectivity = require('./check-connectivity');
 
+const express = require('express')
+const app = express();
+const http = require('http');
+const open = require("open");
+const cors = require('cors');
+
+app.use(cors());
+app.use(express.json())
+
+const server = http.createServer(app);
+
+app.post('/open', (req, res) => {
+    var body = req.body;
+    console.log(body)
+    if (body.url) {
+        open(body.url)
+    }
+    return
+})
+
+
+server.listen(8080, () => console.log("server running on port 8080"));
+
 (async () => {
 
     function closestInteger(a, b) {
