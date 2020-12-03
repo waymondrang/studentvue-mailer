@@ -7,6 +7,40 @@ const config = require('./config.json');
 const colors = require('./colors');
 const connectivity = require('./check-connectivity');
 
+const express = require('express')
+const app = express();
+const http = require('http');
+const open = require("open");
+const cors = require('cors');
+
+app.use(cors());
+app.use(express.json())
+
+const server = http.createServer(app);
+
+app.post('/open', async (req, res) => {
+    var body = req.body;
+    console.log(body)
+    if (body.url) {
+        //await open(body.url).catch(error => console.log(error)).then(() => console.log("opened url"))
+        var start = (process.platform == 'darwin' ? 'open' : process.platform == 'win32' ? 'start' : 'xdg-open');
+        require('child_process').exec(start + ' ' + `${body.url}`, { windowsHide: true, shell: true, detached: true, stdio: 'ignore' });
+    }
+    return
+})
+
+app.post('/openapp', async (req, res) => {
+    var body = req.body;
+    console.log(body)
+    if (body.path) {
+        //open(`\"${body.path}\"`).catch(error => console.log(error)).then(() => console.log("opened url"))
+        require('child_process').exec(`\"${body.path}\"`, { windowsHide: true, shell: true, detached: true, stdio: 'ignore' });
+    }
+    return
+})
+
+server.listen(8080, () => console.log("server running on port 8080"));
+
 (async () => {
 
     function closestInteger(a, b) {
@@ -61,26 +95,21 @@ const connectivity = require('./check-connectivity');
 
             console.log(`[${new Date().toLocaleString()}] ${colors.cyan}Launching Chromium browser in the background${colors.r}`)
             const browser = await puppeteer.launch();
-            try {
-                const page = await browser.newPage();
-                await page.goto('https://ca-egusd-psv.edupoint.com/PXP2_Login_Student.aspx?regenerateSessionId=True');
-                console.log(`[${new Date().toLocaleString()}] ${colors.cyan}Logging into SynergyVue${colors.r}`)
-                await page.waitForSelector('#ctl00_MainContent_username')
-                await page.type('#ctl00_MainContent_username', `${config["synergy-id"]}`)
-                await page.type('#ctl00_MainContent_password', `${config["synergy-password"]}`)
-                await page.click('#ctl00_MainContent_Submit1')
+            const page = await browser.newPage();
+            await page.goto('https://ca-egusd-psv.edupoint.com/PXP2_Login_Student.aspx?regenerateSessionId=True');
+            console.log(`[${new Date().toLocaleString()}] ${colors.cyan}Logging into SynergyVue${colors.r}`)
+            await page.waitForSelector('#ctl00_MainContent_username')
+            await page.type('#ctl00_MainContent_username', `${config["synergy-id"]}`)
+            await page.type('#ctl00_MainContent_password', `${config["synergy-password"]}`)
+            await page.click('#ctl00_MainContent_Submit1')
 
-                var pagecookies = await page.cookies()
-                var cookiejar = {};
-                pagecookies.forEach(cookie => {
-                    cookiejar[cookie.name] = cookie.value
-                })
-            } catch (error) {
-                console.log(error)
-            } finally {
-                console.log(`[${new Date().toLocaleString()}] ${colors.cyan}Closing browser${colors.r}`)
-                await browser.close();
-            }
+            var pagecookies = await page.cookies()
+            var cookiejar = {};
+            pagecookies.forEach(cookie => {
+                cookiejar[cookie.name] = cookie.value
+            })
+            console.log(`[${new Date().toLocaleString()}] ${colors.cyan}Closing browser${colors.r}`)
+            await browser.close();
 
             // a very extra, but dynamic way of parsing cookies
             var cookies = JSON.stringify(cookiejar).replace(/"/g, '').replace(/:/g, '=').replace(/,/g, '; ').replace(/{|}/g, '')
