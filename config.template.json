@@ -3,7 +3,7 @@
     "synergy-password": "PASSWORD",
     "gmail-user": "SERVICE EMAIL",
     "gmail-app-password": "SERVICE PASSWORD",
-    "destination-emails": ["DESTINATION EMAIL"],
+    "destination-emails": ["DESTINATION EMAILS"],
     "update-interval": 1800000,
     "start-on-interval": false
 }
