@@ -62,7 +62,9 @@ const connectivity = require('./check-connectivity');
             console.log(`[${new Date().toLocaleString()}] ${colors.cyan}Launching Chromium browser in the background${colors.r}`)
             const browser = await puppeteer.launch();
             try {
+                console.log(`[${new Date().toLocaleString()}] ${colors.cyan}Opening new page${colors.r}`)
                 const page = await browser.newPage();
+                console.log(`[${new Date().toLocaleString()}] ${colors.cyan}Navigating to site${colors.r}`)
                 await page.goto('https://ca-egusd-psv.edupoint.com/PXP2_Login_Student.aspx?regenerateSessionId=True');
                 console.log(`[${new Date().toLocaleString()}] ${colors.cyan}Logging into SynergyVue${colors.r}`)
                 await page.waitForSelector('#ctl00_MainContent_username')
